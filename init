@@ -1,4 +1,4 @@
-source .helpers
+source ~/dotfiles/.helpers
 
 # TODO how to copy these into ~ without overwriting
 # .gemrc
