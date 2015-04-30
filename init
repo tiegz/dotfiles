@@ -1,3 +1,5 @@
 source .helpers
-source .gemrc
-source .irbrc
+
+# TODO how to copy these into ~ without overwriting
+# .gemrc
+# .irbrc
