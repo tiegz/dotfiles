@@ -1,4 +1,5 @@
 source ~/dotfiles/.helpers
+source ~/dotfiles/.git-aliases
 
 # TODO how to copy these into ~ without overwriting
 # .gemrc
