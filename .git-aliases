@@ -10,6 +10,7 @@ alias gbda='git branch --merged | command grep -vE "^(\*|\s*master\s*$)" | comma
 alias gbl='git blame -b -w'
 alias gbnm='git branch --no-merged'
 alias gbr='git branch --remote'
+alias gbsort='git branch --sort=-committerdate | head -n 10'
 alias gbs='git bisect'
 alias gbsb='git bisect bad'
 alias gbsg='git bisect good'
