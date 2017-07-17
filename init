@@ -1,6 +1,7 @@
 source ~/dotfiles/.helpers
 source ~/dotfiles/.git-aliases
 source ~/dotfiles/.vimrc
+tmux source-file ~/dotfiles/.tmux.conf
 
 # TODO how to copy these into ~ without overwriting
 # .gemrc
