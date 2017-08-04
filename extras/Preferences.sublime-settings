@@ -1,0 +1,53 @@
+{
+	"binary_file_patterns":
+	[
+		"*.log",
+		"*.jpg",
+		"*.jpeg",
+		"*.png",
+		"*.gif",
+		"*.ttf",
+		"*.tga",
+		"*.dds",
+		"*.ico",
+		"*.eot",
+		"*.pdf",
+		"*.swf",
+		"*.jar",
+		"*.zip",
+		"*.ts.html",
+		"*.tsx.html"
+	],
+	"color_scheme": "Packages/User/Red Planet Dark.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
+	"env":
+	{
+		"GOPATH": "$HOME/gocode",
+		"PATH": "$HOME/gocode/bin:$PATH"
+	},
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		"node_modules",
+		"tmp",
+		"browser/.happypack"
+	],
+	"font_size": 15,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"line_numbers": true,
+	"oracle_format": "plain",
+	"oracle_scope":
+	[
+	],
+	"output": "buffer",
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": false
+}
