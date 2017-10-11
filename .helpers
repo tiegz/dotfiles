@@ -18,3 +18,6 @@ export PATH=/usr/local/bin:$PATH
 export EDITOR='vim'
 export GIT_EDITOR=$EDITOR
 export BUNDLE_EDITOR=subl
+
+# Rails
+alias rr='touch tmp/restart.txt'
