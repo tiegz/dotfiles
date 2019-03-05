@@ -1,0 +1,8 @@
+# For now, link to this file in ~/.gitconfig:
+# [include]
+#   path = ~/dotfiles/.gitconfig
+
+[difftool]
+  prompt = false
+[diff]
+  tool = opendiff
