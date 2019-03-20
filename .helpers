@@ -1,5 +1,6 @@
 # BUNDLER
 alias be='bundle exec'
+# Grep your bundled gems.
 bundle_grep() {
   grep --color -r "$@" $(bundle show --paths)
 }
@@ -8,6 +9,17 @@ if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
     . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
 fi
 alias bg='bundle_grep'
+
+# GIF
+# Converts a movie to an animated GIF w/ffmpeg. Useful for GH PRs.
+convert_mov_to_gif() {
+  full_filename=$@
+  filename=$(basename -- "$full_filename")
+  extension="${filename##*.}"
+  filename="${filename%.*}" 
+  ffmpeg -ss 00:00:00.000 -i $full_filename -r 10 -vf "scale=1280:-1" $filename.gif
+}
+alias mov2gif='convert_mov_to_gif'
 
 #
 # ENV
