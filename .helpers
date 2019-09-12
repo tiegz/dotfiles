@@ -2,7 +2,7 @@
 alias be='bundle exec'
 # Grep your bundled gems.
 bundle_grep() {
-  grep --color -r "$@" $(bundle show --paths)
+  grep --color -n -r "$@" $(bundle show --paths)
 }
 if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
     . `brew --prefix`/etc/bash_completion.d/git-completion.bash
