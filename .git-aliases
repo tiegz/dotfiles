@@ -55,15 +55,15 @@ alias gd='git diff'
 
 alias git_current_branch="git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'"
 alias ggpull='git pull origin $(git_current_branch)'
-# compdef _git ggpull=git-checkout
-# ggp() {
-# if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
-# git push origin "${*}"
-# else
-# [[ "$#" == 0 ]] && local b="$(git_current_branch)"
-# git push origin "${b:=$1}"
-# fi
-# }
+compdef _git ggpull=git-checkout
+ggp() {
+if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
+git push origin "${*}"
+else
+[[ "$#" == 0 ]] && local b="$(git_current_branch)"
+git push origin "${b:=$1}"
+fi
+}
 # alias ggpush='git push origin $(git_current_branch)'
 
 alias gignore='git update-index --assume-unchanged'
