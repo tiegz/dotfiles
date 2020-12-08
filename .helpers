@@ -4,10 +4,15 @@ alias be='bundle exec'
 bundle_grep() {
   grep --color -n -r "$@" $(bundle show --paths)
 }
-if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
-    . `brew --prefix`/etc/bash_completion.d/git-completion.bash
-    . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
+
+# enable git completion in either zsh or bash
+if [ $SHELL = '/bin/zsh' ]; then
+  autoload -Uz compinit && compinit
+else
+  . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+  . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
 fi
+
 alias bg='bundle_grep'
 
 # GIF
@@ -25,7 +30,6 @@ alias mov2gif='convert_mov_to_gif'
 # ENV
 #
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
 export PATH=/usr/local/bin:$PATH
 export EDITOR='vim'
 export GIT_EDITOR=$EDITOR
@@ -33,3 +37,15 @@ export BUNDLE_EDITOR=subl
 
 # Rails
 alias rr='touch tmp/restart.txt'
+
+# Setup prompt
+if [[ $SHELL == "/bin/bash" ]]; then
+  export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
+else
+  autoload -Uz vcs_info
+  precmd() { vcs_info }
+  zstyle ':vcs_info:git*' formats "%{$fg[grey]%}%s %{$reset_color%}%r/%S%{$fg[grey]%} %{$fg[blue]%}%b%{$reset_color%}%m%u%c%{$reset_color%} "
+  setopt PROMPT_SUBST
+  PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
+fi
+
