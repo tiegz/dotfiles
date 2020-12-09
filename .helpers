@@ -49,3 +49,8 @@ else
   PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
 fi
 
+# Fix keybindings for ZSH
+if [[ $SHELL == "/bin/zsh" ]]; then
+  bindkey "^A" vi-beginning-of-line
+  bindkey "^E" vi-end-of-line
+fi
