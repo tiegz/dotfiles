@@ -6,7 +6,7 @@
 
 ``` sh
 cd ~
-git clone git@github.com:tiegz/dotfiles.git ~
+git clone git@github.com:tiegz/dotfiles.git
 ```
 
 #### 2) add dotfiles to rc script:
