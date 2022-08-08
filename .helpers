@@ -52,7 +52,7 @@ else
   # %m - machine hostname
   # %n - username
   setopt PROMPT_SUBST
-  PROMPT="%{$fg[green]%}%n%{$reset_color%}%{$fg[blue]%}@%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}${vcs_info_msg_0_}%b%{$fg[green]%}>%{$reset_color%} "
+  PROMPT='%{$fg[green]%}%n%{$reset_color%}%{$fg[blue]%}@%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}${vcs_info_msg_0_}%b%{$fg[green]%}>%{$reset_color%} '
 fi
 
 # Fix keybindings for ZSH
