@@ -45,12 +45,14 @@ else
   autoload -U colors && colors
   autoload -Uz vcs_info
   precmd() { vcs_info }
-  zstyle ':vcs_info:git*' formats "%{$fg[grey]%}%s %{$reset_color%}%r/%S%{$fg[grey]%} %{$fg[blue]%}%b%{$reset_color%}%m%u%c%{$reset_color%} "
+  # %b - branch
+  # zstyle ':vcs_info:git*' formats "%{$fg[grey]%}%s %{$reset_color%}%r/%S%{$fg[grey]%} %{$fg[blue]%}%b%{$reset_color%}%m%u%c%{$reset_color%} "
   zstyle ':vcs_info:git*' formats "%{$fg[blue]%}(%b)%{$reset_color%}%m%u%c%{$reset_color%}"
+
+  # %m - machine hostname
+  # %n - username
   setopt PROMPT_SUBST
-  # PROMPT='%n@${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
-  # PROMPT='%n@${PWD/#$HOME/~}> '
-  PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[green]%}%m %{$fg[yellow]%}%~ %{$reset_color%}${vcs_info_msg_0_} %{$fg[green]%}>%{$reset_color%} "
+  PROMPT="%{$fg[green]%}%n%{$reset_color%}%{$fg[blue]%}@%{$reset_color%}%{$fg[yellow]%}%~%{$reset_color%}${vcs_info_msg_0_}%b%{$fg[green]%}>%{$reset_color%} "
 fi
 
 # Fix keybindings for ZSH
