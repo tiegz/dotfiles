@@ -2,7 +2,7 @@
 alias be='bundle exec'
 # Grep your bundled gems.
 bundle_grep() {
-  grep --color -n -r "$@" $(bundle show --paths)
+  grep --color -n -r "$@" $(bundle list)
 }
 
 # enable git completion in either zsh or bash
@@ -38,6 +38,11 @@ export BUNDLE_EDITOR=subl
 # Rails
 alias rr='touch tmp/restart.txt'
 
+# Docker
+# dc overrides the builtin MacOS calculator program
+
+alias dc='docker compose'
+
 # Setup prompt
 if [[ $SHELL == "/bin/bash" ]]; then
   export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
@@ -46,7 +51,7 @@ else
   autoload -Uz vcs_info
   precmd() { vcs_info }
   # %b - branch
-  # zstyle ':vcs_info:git*' formats "%{$fg[grey]%}%s %{$reset_color%}%r/%S%{$fg[grey]%} %{$fg[blue]%}%b%{$reset_color%}%m%u%c%{$reset_color%} "
+  #zstyle ':vcs_info:git*' formats "%{$fg[grey]%}%s %{$reset_color%}%r/%S%{$fg[grey]%} %{$fg[blue]%}%b%{$reset_color%}%m%u%c%{$reset_color%} "
   zstyle ':vcs_info:git*' formats "%{$fg[blue]%}(%b)%{$reset_color%}%m%u%c%{$reset_color%}"
 
   # %m - machine hostname
@@ -60,3 +65,4 @@ if [[ $SHELL == "/bin/zsh" ]]; then
   bindkey "^A" vi-beginning-of-line
   bindkey "^E" vi-end-of-line
 fi
+
