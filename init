@@ -5,7 +5,12 @@ source ~/dotfiles/.git-aliases
 mkdir -p ~/.vim/plugin
 ln -sF $HOME/dotfiles/.vimrc $HOME/.vim/plugin/tiegz.vim
 
-tmux source-file ~/dotfiles/.tmux.conf
+if tmux info &> /dev/null; then
+  echo "Loaded ~/dotfiles/.tmux.conf"
+  tmux source-file ~/dotfiles/.tmux.conf
+else
+  # tmux not running
+fi
 
 # TODO how to copy these into ~ without overwriting
 # .gemrc

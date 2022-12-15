@@ -44,7 +44,8 @@ alias rr='touch tmp/restart.txt'
 alias dc='docker compose'
 
 # Setup prompt
-if [[ $SHELL == "/bin/bash" ]]; then
+if [[ $SHELL == "/bin/bash" ]]
+then
   export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;34m\] \$\[\033[00m\] '
 else
   autoload -U colors && colors
@@ -67,7 +68,7 @@ if [[ $SHELL == "/bin/zsh" ]]; then
 fi
 
 # Docker compose helpers 
-alias drails="docker compose exec app rails $@"
-alias drake="docker compose exec app rake $@"
+# alias drails="docker compose exec app rails $@"
+# alias drake="docker compose exec app rake $@"
 # TODO: why won't this work with all args, $@?
-alias dbg="docker compose exec app sh -c 'grep --color -n -r \"\$0\" `bundle list`'"
+# alias dbg="docker compose exec app sh -c 'grep --color -n -r \"\$0\" `bundle list`'"
