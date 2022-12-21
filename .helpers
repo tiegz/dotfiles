@@ -2,7 +2,7 @@
 alias be='bundle exec'
 # Grep your bundled gems.
 bundle_grep() {
-  grep --color -n -r "$@" $(bundle list)
+  grep --color -n -r "$@" $(bundle list --paths)
 }
 
 # enable git completion in either zsh or bash
