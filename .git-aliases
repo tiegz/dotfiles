@@ -58,6 +58,7 @@ alias gd='git diff'
 
 alias git_current_branch="git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'"
 alias ggpull='git pull origin $(git_current_branch)'
+
 compdef _git ggpull=git-checkout
 ggp() {
 if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
