@@ -63,3 +63,28 @@ fi
 # alias drake="docker compose exec app rake $@"
 # TODO: why won't this work with all args, $@?
 # alias dbg="docker compose exec app sh -c 'grep --color -n -r \"\$0\" `bundle list`'"
+
+# Store a secret in the macOS Keychain, under "work" label
+secret_set() {
+  # Usage: secret_set SECRET_NAME SECRET_VALUE
+  if [ $# -lt 2 ]; then
+    echo "Usage: secret_set SECRET_NAME SECRET_VALUE"
+    return 1
+  fi
+  security add-generic-password -a "$USER" -s "$1" -w "$2" -U -l work
+}
+
+# Retrieve a secret from the macOS Keychain with the "work" label
+secret_get() {
+  if [ $# -lt 1 ]; then
+    echo "Usage: aws_secret_get SECRET_NAME"
+    return 1
+  fi
+  security find-generic-password -a "$USER" -s "$1" -w
+}
+
+# List all secrets with "work" label
+secret_list() {
+  echo "Listing all generic passwords with 'work' label for user $USER:"
+  security find-generic-password -a "$USER" -l "work" | awk -F'=' '/svce/ { print $2 }'
+}
