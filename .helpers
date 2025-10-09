@@ -66,12 +66,11 @@ fi
 
 # Store a secret in the macOS Keychain, under "work" label
 secret_set() {
-  # Usage: secret_set SECRET_NAME SECRET_VALUE
   if [ $# -lt 2 ]; then
     echo "Usage: secret_set SECRET_NAME SECRET_VALUE"
     return 1
   fi
-  security add-generic-password -a "$USER" -s "$1" -w "$2" -U -l work
+  security add-generic-password -a "$USER" -s "$1" -w "$2" -U -l "work"
 }
 
 # Retrieve a secret from the macOS Keychain with the "work" label
