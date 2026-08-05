@@ -150,6 +150,8 @@ alias gvt='git verify-tag'
 
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
 
+alias gempty="git commit --only --allow-empty -m 'empty commit'"
+
 
 
 
