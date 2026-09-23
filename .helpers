@@ -2,7 +2,11 @@
 alias be='bundle exec'
 # Grep your bundled gems.
 bundle_grep() {
-  grep --color -n -r "$@" $(bundle list --paths)
+  local paths=()
+  while IFS= read -r path; do
+    paths+=("$path")
+  done < <(bundle list --paths)
+  grep --color -n -r "$@" "${paths[@]}"
 }
 
 alias bg='bundle_grep'
@@ -10,11 +14,10 @@ alias bg='bundle_grep'
 # GIF
 # Converts a movie to an animated GIF w/ffmpeg. Useful for GH PRs.
 convert_mov_to_gif() {
-  full_filename=$@
+  full_filename="$1"
   filename=$(basename -- "$full_filename")
-  extension="${filename##*.}"
-  filename="${filename%.*}" 
-  ffmpeg -ss 00:00:00.000 -i $full_filename -r 10 -vf "scale=1280:-1" $filename.gif
+  filename="${filename%.*}"
+  ffmpeg -ss 00:00:00.000 -i "$full_filename" -r 10 -vf "scale=1280:-1" "$filename.gif"
 }
 alias mov2gif='convert_mov_to_gif'
 
@@ -22,10 +25,8 @@ alias mov2gif='convert_mov_to_gif'
 # ENV
 #
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PATH=/usr/local/bin:$PATH
 export EDITOR='vim'
 export GIT_EDITOR=$EDITOR
-export BUNDLE_EDITOR=subl
 
 # Rails
 alias rr='touch tmp/restart.txt'

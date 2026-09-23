@@ -32,7 +32,7 @@ alias gc='git commit -v'
 # alias gcmsg='git commit -m'
 alias gco='git checkout'
 
-if [ $0 = "/bin/bash" ]; then
+if [ -n "$BASH_VERSION" ] && type __git_complete >/dev/null 2>&1; then
     __git_complete gco _git_checkout
 fi
 # alias gcount='git shortlog -sn'
@@ -59,7 +59,9 @@ alias gd='git diff'
 alias git_current_branch="git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'"
 alias ggpull='git pull origin $(git_current_branch)'
 
-compdef _git ggpull=git-checkout
+if [ -n "$ZSH_VERSION" ]; then
+    compdef _git ggpull=git-checkout
+fi
 ggp() {
 if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
 git push origin "${*}"
@@ -75,7 +77,7 @@ alias gignored='git ls-files -v | grep "^[[:lower:]]"'
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
 
 alias gl='git pull'
-if [ $0 = "/bin/bash" ]; then
+if [ -n "$BASH_VERSION" ] && type __git_complete >/dev/null 2>&1; then
     __git_complete gl _git_pull
 fi
 alias glg='git log --stat --color'
@@ -96,7 +98,7 @@ alias gmtvim='git mergetool --no-prompt --tool=vimdiff'
 alias gmum='git merge upstream/master'
 
 alias gp='git push'
-if [ $0 = "/bin/bash" ]; then
+if [ -n "$BASH_VERSION" ] && type __git_complete >/dev/null 2>&1; then
     __git_complete gp _git_push
 fi
 alias gpd='git push --dry-run'

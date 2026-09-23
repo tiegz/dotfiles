@@ -14,13 +14,13 @@ git clone git@github.com:tiegz/dotfiles.git
 #### zsh
 
 ``` sh
-echo "source ~/dotfiles/init" >> ~/.zshrc
+echo "source ~/dotfiles/init.sh" >> ~/.zshrc
 source ~/.zshrc
 ```
 
 #### bash
 
 ``` sh
-echo "source ~/dotfiles/init" >> ~/.bash_profile
+echo "source ~/dotfiles/init.sh" >> ~/.bash_profile
 source ~/.bash_profile
 ```
